@@ -1,0 +1,6 @@
+{
+  "files.eol": "\n",
+  "editor.renderWhitespace": "all",
+  "editor.tabSize": 3,
+  "go.inferGopath": false,
+}

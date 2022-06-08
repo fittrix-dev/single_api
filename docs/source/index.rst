@@ -1,22 +1,17 @@
-Welcome to Lumache's documentation!
+Fittrix Api 문서에 오신 것을 환영합니다.
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
-
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+본 문서는 (주)피트릭스에 제공하는 API 가이드입니다.
+해당 문서를 참조하여 API를 통해서 본사의 바디미터로 측정된 데이터를 조회가 가능합니다.
 
 .. note::
 
-   This project is under active development.
+   해당 문서는 기능이 추가되거나 변경될 경우 주기적으로 업데이트될 예정입니다.
 
 Contents
 --------
 
 .. toctree::
 
-   usage
+   authorization
    api
