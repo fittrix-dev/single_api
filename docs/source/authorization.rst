@@ -1,4 +1,4 @@
-Usage
+Authorization
 =====
 
 .. _installation:
