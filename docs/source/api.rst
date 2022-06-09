@@ -63,3 +63,48 @@ List
         - 메모
         - X
         - string
+
+* Example
+
+BodyList
+*******
+
+특정 사용자의 측정 회차 정보를 조회하는 API입니다.
+
+* URL: ``{{API 주소}}/bodyList``
+* Request Type: ``GET``
+* Request Parameter
+   .. list-table::
+      :header-rows: 1
+
+      * - 변수명
+        - 항목
+        - 필수 여부
+        - 비고
+      * - member_no
+        - 사용자 번호
+        - O
+        -
+
+* Response Data
+   .. list-table::
+      :header-rows: 1
+
+      * - 변수명
+        - 항목
+        - 필수 여부
+        - 자료형
+      * - body_no
+        - 측정 번호
+        - O
+        - int
+      * - evaluation_dt
+        - 측정 일시
+        - O
+        - string
+      * - mirror_id
+        - 측정 기기 아이디
+        - O
+        - string
+
+* Example
