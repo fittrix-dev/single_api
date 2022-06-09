@@ -8,8 +8,8 @@ List
 
 바디미터에서 측정된 사용자의 목록을 조회하는 API입니다.
 
-* URL: {{API 주소}}/list
-* Request Type: `GET`
+* URL: ``{{API 주소}}/list``
+* Request Type: ``GET``
 * Request Parameter
    .. list-table::
       :header-rows: 1
@@ -28,3 +28,38 @@ List
         - 기본값 :20
 
 * Response Data
+   .. list-table::
+      :header-rows: 1
+
+      * - 변수명
+        - 항목
+        - 필수 여부
+        - 자료형
+      * - member_no
+        - 사용자 번호
+        - O
+        - int
+      * - user_name
+        - 사용자 이름
+        - X
+        - string
+      * - phone
+        - 사용자 전화번호
+        - O
+        - string
+      * - gender
+        - 성별
+        - O
+        - string(male|female)
+      * - birthday
+        - 생년월일
+        - X
+        - string
+      * - last_evaluate_date
+        - 마지막 측정일
+        - O
+        - string
+      * - memo
+        - 메모
+        - X
+        - string
