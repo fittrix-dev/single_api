@@ -45,24 +45,31 @@ API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 
       "issued_at": "2022-03-01T12:00:00.000"
    }
 
+access_token은 발급한 시간으로부터 2시간 동안 유효하고, refresh_token은 발급받은 시간으로부터 2일간 유효합니다.
 
-Creating recipes
+재인증
 ----------------
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+access_token이 만료되고 refresh_token만 유효한 경우는 다음과 같이 호출하여서 access_token을 재발급받을 수 있습니다.
 
-.. autofunction:: lumache.get_random_ingredients
+.. code-block:: console
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
+   curl -X POST \
+      '{API 주소}/authorize ' \
+      -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
+      -H 'Content-Type: application/x-www-form-urlencoded' \
+      -d 'grant_type=refresh_token&refresh_token={refresh_token}'
 
-.. autoexception:: lumache.InvalidKindError
+호출 결과는 아래와 같습니다.
 
-For example:
+.. code-block:: console
 
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
-
+   HTTP/1.1 200 OK
+   {
+      "access_token": "21EZes0dGSfN..........",
+      "expires_at": "2022-03-01T15:50:00.000",
+      "refresh_token": "xLlhWztQHBik............",
+      "refresh_token_expires_at": "2022-03-03T13:50:00.000",
+      "group_id": "GN0001",
+      "issued_at": "2022-03-01T13:50:00.000"
+   }
