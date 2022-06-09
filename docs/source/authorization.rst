@@ -14,7 +14,7 @@ Authorization
 
 API 인증은 다음의 주소로 진행됩니다.
 
-* {API 주소}/authorize
+* {{API 주소}}/authorize
 
 API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 주소는 다음과 같습니다.
 
@@ -26,7 +26,7 @@ API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 
 .. code-block:: console
 
    curl -X POST \
-      '{API 주소}/authorize' \
+      '{{API 주소}}/authorize' \
       -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
       -H 'Content-Type: application/x-www-form-urlencoded' \
       -d 'grant_type=authorization_code&group_id={group_id}&client_token={client_token}'
@@ -55,7 +55,7 @@ access_token이 만료되고 refresh_token만 유효한 경우는 다음과 같�
 .. code-block:: console
 
    curl -X POST \
-      '{API 주소}/authorize ' \
+      '{{API 주소}}/authorize ' \
       -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
       -H 'Content-Type: application/x-www-form-urlencoded' \
       -d 'grant_type=refresh_token&refresh_token={refresh_token}'
