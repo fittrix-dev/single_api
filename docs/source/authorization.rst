@@ -14,7 +14,7 @@ Authorization
 
 API 인증은 다음의 주소로 진행됩니다.
 
-* {{API 주소}}/authorize
+* {{API 주소}}/api/v1/authorize
 
 API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 주소는 다음과 같습니다.
 
@@ -74,24 +74,45 @@ access_token은 발급한 시간으로부터 2시간 동안 유효하고, refres
 
 access_token이 만료되고 refresh_token만 유효한 경우는 다음과 같이 호출하여서 access_token을 재발급받을 수 있습니다.
 
-.. code-block:: console
 
-   curl -X POST \
-      '{{API 주소}}/authorize ' \
-      -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
-      -H 'Content-Type: application/x-www-form-urlencoded' \
-      -d 'grant_type=refresh_token&refresh_token={refresh_token}'
+.. http:post:: /api/v1/authorize
 
-호출 결과는 아래와 같습니다.
+   .. Request
 
-.. code-block:: console
+   :reqheader Authorization: Basic {base64_encode({group_id}:{secret_key})}
+   :param string grant_type: 인증 요청 분류, ``refresh_token``로 고정
+   :param string refresh_token: refresh_token
+   :status 200: 인증 성공
+   :status 401: 인증 실패
 
-   HTTP/1.1 200 OK
-   {
-      "access_token": "21EZes0dGSfN..........",
-      "expires_at": "2022-03-01T15:50:00.000",
-      "refresh_token": "xLlhWztQHBik............",
-      "refresh_token_expires_at": "2022-03-03T13:50:00.000",
-      "group_id": "GN0001",
-      "issued_at": "2022-03-01T13:50:00.000"
-   }
+   .. Response
+
+   :>json string access_token: 인증키
+   :>json string expires_at: 인증키 유효일시
+   :>json string refresh_token: Refresh Token
+   :>json string refresh_token_expires_at: Refresh Token 유효시간
+   :>json string group_id: 인증된 그룹 ID
+   :>json string issued_at: 인증된 시간
+
+   **Example request**:
+
+      .. sourcecode:: bash
+
+         curl -X POST \
+            '{{API 주소}}/authorize' \
+            -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
+            -H 'Content-Type: application/x-www-form-urlencoded' \
+            -d 'grant_type=refresh_token&refresh_token={refresh_token}'
+
+   **Example response**:
+
+      .. sourcecode:: http
+
+         HTTP/1.1 200 OK
+         {
+            "access_token": "0iqR5nM5EJIq..........",
+            "expires_at": "2022-03-01T14:00:00.000",
+            "refresh_token": "JeTJ7XpnFC0P..........",
+            "refresh_token_expires_at": "2022-03-03T12:00:00.000",
+            "group_id ": "GN0001",
+            "issued_at": "2022-03-01T12:00:00.000"
