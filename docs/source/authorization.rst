@@ -20,6 +20,7 @@ API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 
 호출은 다음과 같이 진행됩니다.
 
 .. code-block:: console
+
    curl -X POST \
       '{API 주소}/authorize' \
       -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
@@ -27,7 +28,9 @@ API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 
       -d 'grant_type=authorization_code&group_id={group_id}&client_token={client_token}'
 
 호출 결과는 아래와 같습니다.
+
 .. code-block:: console
+
    HTTP/1.1 200 OK
    {
       "access_token": "0iqR5nM5EJIq..........",
