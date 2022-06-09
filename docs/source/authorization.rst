@@ -45,16 +45,15 @@ API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 
 
    **Example request**:
 
-   .. tabs::
-      .. code-tab:: bash
+      .. sourcecode:: bash
          curl -X POST \
             '{{API 주소}}/authorize' \
             -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
             -H 'Content-Type: application/x-www-form-urlencoded' \
             -d 'grant_type=authorization_code&group_id={group_id}&client_token={client_token}'
-      .. sourcecode:: http
 
    **Example response**:
+
       .. sourcecode:: http
          HTTP/1.1 200 OK
          {
@@ -65,28 +64,6 @@ API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 
             "group_id ": "GN0001",
             "issued_at": "2022-03-01T12:00:00.000"
          }
-
-.. code-block:: console
-
-   curl -X POST \
-      '{{API 주소}}/authorize' \
-      -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
-      -H 'Content-Type: application/x-www-form-urlencoded' \
-      -d 'grant_type=authorization_code&group_id={group_id}&client_token={client_token}'
-
-호출 결과는 아래와 같습니다.
-
-.. code-block:: console
-
-   HTTP/1.1 200 OK
-   {
-      "access_token": "0iqR5nM5EJIq..........",
-      "expires_at": "2022-03-01T14:00:00.000",
-      "refresh_token": "JeTJ7XpnFC0P..........",
-      "refresh_token_expires_at": "2022-03-03T12:00:00.000",
-      "group_id ": "GN0001",
-      "issued_at": "2022-03-01T12:00:00.000"
-   }
 
 access_token은 발급한 시간으로부터 2시간 동안 유효하고, refresh_token은 발급받은 시간으로부터 2일간 유효합니다.
 
