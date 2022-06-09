@@ -1,23 +1,6 @@
 # Configuration file for the Sphinx documentation builder.
 
 
-import os
-import sys
-
-import sphinx_rtd_theme
-
-sys.path.insert(0, os.path.abspath(".."))
-sys.path.append(os.path.dirname(__file__))
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "readthedocs.settings.dev")
-
-# Load Django after sys.path and configuration setup
-# isort: split
-import django
-
-django.setup()
-
-sys.path.append(os.path.abspath("_ext"))
-
 # -- Project information
 
 project = 'Fittrix'
