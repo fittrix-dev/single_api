@@ -13,10 +13,14 @@ Authorization
 ------------
 
 API 인증은 다음의 주소로 진행됩니다.
+
 * {API 주소}/authorize
+
 API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 주소는 다음과 같습니다.
+
 * 개발용: https://test.fittrix.co.kr
 * 실서비스용: https://apiservice.fittrix.io
+
 호출은 다음과 같이 진행됩니다.
 
 .. code-block:: console
