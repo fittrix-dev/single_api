@@ -125,7 +125,7 @@ BodyData
         - 필수 여부
         - 비고
       * - body_no
-        - 측정 회차 번호
+        - 측정 번호
         - O
         -
 
@@ -342,4 +342,62 @@ BodyData
         - X
         - int
 
+* **Example**
+
+PhotoList
+*******
+
+사용자의 측정 회차의 측정 이미지 리스트를 조회하는 API입니다.
+
+* **URL**: ``{{API 주소}}/photoList``
+* **Request Type**: ``GET``
+* **Request Parameter**
+   .. list-table::
+      :header-rows: 1
+
+      * - 변수명
+        - 항목
+        - 필수 여부
+        - 비고
+      * - body_no
+        - 측정 번호
+        - O
+        -
+
+* **Response Data**
+   .. list-table::
+      :header-rows: 1
+
+      * - 변수명
+        - 항목
+        - 필수 여부
+        - 자료형
+      * - path
+        - 파일 경로 배열
+        - O
+        - string array
+
+* **Example**
+
+PhotoView
+*******
+
+사용자의 측정 회차의 측정 이미지를 조회하는 API입니다.
+
+* **URL**: ``{{API 주소}}/photoView``
+* **Request Type**: ``GET``
+* **Request Parameter**
+   .. list-table::
+      :header-rows: 1
+
+      * - 변수명
+        - 항목
+        - 필수 여부
+        - 비고
+      * - path
+        - 이미지 경로
+        - O
+        -
+
+* **Response Data**: Image Binary File
 * **Example**
