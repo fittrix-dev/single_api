@@ -9,16 +9,35 @@ Authorization
 * ``client_token``: 클라이언트 키
 * ``secret_key``: 비밀키
 
-.. _accessToken:
-
 인증
 ------------
 
-To use Lumache, first install it using pip:
+API 인증은 다음의 주소로 진행됩니다.
+* {API 주소}/authorize
+API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 주소는 다음과 같습니다.
+* 개발용: https://test.fittrix.co.kr
+* 실서비스용: https://apiservice.fittrix.io
+호출은 다음과 같이 진행됩니다.
 
 .. code-block:: console
+   curl -X POST \
+      '{API 주소}/authorize' \
+      -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
+      -H 'Content-Type: application/x-www-form-urlencoded' \
+      -d 'grant_type=authorization_code&group_id={group_id}&client_token={client_token}'
 
-   (.venv) $ pip install lumache
+호출 결과는 아래와 같습니다.
+.. code-block:: console
+   HTTP/1.1 200 OK
+   {
+      "access_token": "0iqR5nM5EJIq..........",
+      "expires_at": "2022-03-01T14:00:00.000",
+      "refresh_token": "JeTJ7XpnFC0P..........",
+      "refresh_token_expires_at": "2022-03-03T12:00:00.000",
+      "group_id ": "GN0001",
+      "issued_at": "2022-03-01T12:00:00.000"
+   }
+
 
 Creating recipes
 ----------------
