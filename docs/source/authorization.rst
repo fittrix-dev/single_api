@@ -23,6 +23,49 @@ API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 
 
 호출은 다음과 같이 진행됩니다.
 
+.. http:post:: /api/v1/authorize
+
+   .. Request
+
+   :reqheader Authorization: Basic {base64_encode({group_id}:{secret_key})}
+   :param string grant_type: 인증 요청 분류, ``authorization_code``로 고정
+   :param string group_id: 그룹 ID
+   :param string client_token: 안내된 Client Token
+   :status 200: 인증 성공
+   :status 401: 인증 실패
+
+   .. Response
+
+   :>json string access_token: 인증키
+   :>json string expires_at: 인증키 유효일시
+   :>json string refresh_token: Refresh Token
+   :>json string refresh_token_expires_at: Refresh Token 유효시간
+   :>json string group_id: 인증된 그룹 ID
+   :>json string issued_at: 인증된 시간
+
+   **Example request**:
+
+   .. tabs::
+      .. code-tab:: bash
+         curl -X POST \
+            '{{API 주소}}/authorize' \
+            -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
+            -H 'Content-Type: application/x-www-form-urlencoded' \
+            -d 'grant_type=authorization_code&group_id={group_id}&client_token={client_token}'
+      .. sourcecode:: http
+
+   **Example response**:
+      .. sourcecode:: http
+         HTTP/1.1 200 OK
+         {
+            "access_token": "0iqR5nM5EJIq..........",
+            "expires_at": "2022-03-01T14:00:00.000",
+            "refresh_token": "JeTJ7XpnFC0P..........",
+            "refresh_token_expires_at": "2022-03-03T12:00:00.000",
+            "group_id ": "GN0001",
+            "issued_at": "2022-03-01T12:00:00.000"
+         }
+
 .. code-block:: console
 
    curl -X POST \
