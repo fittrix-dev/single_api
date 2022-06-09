@@ -18,7 +18,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
-    'sphinxcontrib.httpdomain2',
+    'sphinxcontrib.httpdomain',
 ]
 
 intersphinx_mapping = {
