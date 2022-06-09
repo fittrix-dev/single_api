@@ -17,8 +17,3 @@ Contents
 
    authorization
    api
-      list
-      bodyList
-      bodyData
-      photoList
-      photoView
