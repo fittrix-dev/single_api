@@ -33,3 +33,9 @@ html_theme = 'sphinx_rtd_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+html_context = {
+   "display_github": False, # Add 'Edit on Github' link instead of 'View page source'
+   "last_updated": True,
+   "commit": False,
+}
