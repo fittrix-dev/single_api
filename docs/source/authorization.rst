@@ -46,6 +46,7 @@ API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 
    **Example request**:
 
       .. sourcecode:: bash
+
          curl -X POST \
             '{{API 주소}}/authorize' \
             -H 'Authorization: Basic {base64_encode({group_id}:{secret_key})}' \
@@ -55,6 +56,7 @@ API 주소는 개발용과 서비스용으로 분리하여 제공합니다. 각 
    **Example response**:
 
       .. sourcecode:: http
+
          HTTP/1.1 200 OK
          {
             "access_token": "0iqR5nM5EJIq..........",
