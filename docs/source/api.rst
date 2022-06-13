@@ -9,10 +9,12 @@ API는 인증을 통해서 JWT 토큰을 발급받은 이후에 호출이 가능
 
 .. http:get:: /api/v1/list
 
-   바디미터에서 측정된 사용자의 목록을 조회하는 API입니다.
+   바디미터에서 측정된 사용자의 목록을 조회하는 API입니다. 고객이 앱을 통해서 이름을 입력한 경우에만 이름 검색이 가능합니다. 검색타입과 검색어를 모두 입력한 경우에만 검색이 작동합니다.
 
    .. Request
 
+   :query string search_type: 검색타입(name: 이름검색, mobile: 전화번호)
+   :query string search_keyword: 검색어
    :query int page: 페이지 번호, 생략시 전체 리스트 반환
    :query int limit: 페이지당 항목 수, 기본 값 20
 
