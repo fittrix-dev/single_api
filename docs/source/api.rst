@@ -113,7 +113,11 @@ API는 인증을 통해서 JWT 토큰을 발급받은 이후에 호출이 가능
 
    .. Response
 
-   :>json array path: 파일 경로 배열
+   :>json string name: 파일 경로 배열
+   :>json string lastModified: 마지막 수정일시
+   :>json int contentSize: 파일 크기
+   :>json string contentType: 파일의 Mime Type
+   :>json string uri: 파일의 URI 경로(접근할 수 없음)
 
 .. http:get:: /api/v1/photoView
 
