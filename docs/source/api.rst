@@ -27,6 +27,32 @@ API는 인증을 통해서 JWT 토큰을 발급받은 이후에 호출이 가능
    :>json string last_evaluate_date: 마지막 측정일
    :>json string memo: 사용자 메모
 
+   **Example request**:
+
+      .. sourcecode:: bash
+
+         curl '{{API 주소}}/api/v1/list?page=1&limit=20&search_type=mobile&search_keyword=010......' \
+            -H 'Authorization: Bearer eyJhb.......'
+
+   **Example response**:
+
+      .. sourcecode:: http
+
+         HTTP/1.1 200 OK
+         {
+            "cnt":1,
+            "list":[
+               {
+                  "member_no":237,
+                  "user_name":"신..",
+                  "phone":"010........",
+                  "gender":"female",
+                  "last_evaluate_date":"2021-10-19 19:03:48",
+                  "memo":null
+               }
+            ]
+         }
+
 .. http:get:: /api/v1/bodyList
 
    특정 사용자의 측정 회차 정보를 조회하는 API입니다.
@@ -40,6 +66,34 @@ API는 인증을 통해서 JWT 토큰을 발급받은 이후에 호출이 가능
    :>json int body_no: 측정 번호
    :>json string evaluation_dt: 측정 일시
    :>json string mirror_id: 측정 기기 아이디
+
+   **Example request**:
+
+      .. sourcecode:: bash
+
+         curl '{{API 주소}}/api/v1/bodyList?member_no=237' \
+            -H 'Authorization: Bearer eyJhb.......'
+
+   **Example response**:
+
+      .. sourcecode:: http
+
+         HTTP/1.1 200 OK
+         {
+            "list":[
+               {
+                  "body_no":1302,
+                  "evaluation_dt":"2021-10-19 19:03:48",
+                  "mirror_id":"SM0000007"
+               },
+               {
+                  "body_no":1250,
+                  "evaluation_dt":"2021-09-19 09:18:39",
+                  "mirror_id":"SM0000002"
+               },
+               ...
+            ]
+         }
 
 .. http:get:: /api/v1/bodyData
 
@@ -103,6 +157,72 @@ API는 인증을 통해서 JWT 토큰을 발급받은 이후에 호출이 가능
    :>json int waist_circum: 허리 둘레
    :>json int waist_width: 허리 너비
 
+   **Example request**:
+
+      .. sourcecode:: bash
+
+         curl '{{API 주소}}/api/v1/bodyList?body_no=1302' \
+            -H 'Authorization: Bearer eyJhb.......'
+
+   **Example response**:
+
+      .. sourcecode:: http
+
+         HTTP/1.1 200 OK
+         {
+            "mirror_id": "SM0000007",
+            "mode": "NO",
+            "body_no": 1302,
+            "face_width": -111,
+            "face_length": -111,
+            "shoulder_width": -111,
+            "arm_length": -111,
+            "waist_width": 26,
+            "waist_circum": 74,
+            "hip_width": 33,
+            "hip_circum": 94,
+            "body_upper_length": 0,
+            "body_lower_length": -111,
+            "height": 0,
+            "posture_score": 85,
+            "ratio_arm_height": -111,
+            "ratio_lower_upper": -111,
+            "turtleNeckGrade": "A",
+            "roundShoulderGrade": "A",
+            "upShoulderGrade": "A",
+            "downShoulderGrade": "A",
+            "shoulderFlexLeftUpperGrade": "C",
+            "shoulderFlexLeftLowerGrade": "B",
+            "shoulderFlexRightUpperGrade": "C",
+            "shoulderFlexRightLowerGrade": "B",
+            "waistFrontGrade": "A",
+            "waistBackGrade": "A",
+            "trunkStrengthGrade": "A",
+            "thighFlexibilityGrade": "A",
+            "calfFlexibilityGrade": "B",
+            "lowerMuscleGrade": "A",
+            "evaluation_dt": "2021-10-19 19:03:48",
+            "ratio_shoulder_face": -111,
+            "body_type": "i",
+            "body_type_org": "A11",
+            "exercise_round_home": 1,
+            "exercise_round_office": 1,
+            "turtle_neck_formula": 1,
+            "neck_inclined_formula": 0,
+            "round_shoulder_formula": 1,
+            "shoulder_inclined_formula": 13,
+            "right_upper_shoulder_formula": 136,
+            "right_lower_shoulder_formula": 13,
+            "left_upper_shoulder_formula": 138,
+            "left_lower_shoulder_formula": 13,
+            "spine_inclined_formula": 1,
+            "upper_body_flip_formula": 8,
+            "foot_from_wrist_formula": 180,
+            "pelvis_distance_formula": 25,
+            "pelvis_side_distance_formula": 2,
+            "LeftWeightBalance": null
+         }
+
 .. http:get:: /api/v1/photoList
 
    사용자의 측정 회차의 측정 이미지 리스트를 조회하는 API입니다.
@@ -119,6 +239,91 @@ API는 인증을 통해서 JWT 토큰을 발급받은 이후에 호출이 가능
    :>json string contentType: 파일의 Mime Type
    :>json string uri: 파일의 URI 경로(접근할 수 없음)
 
+   **Example request**:
+
+      .. sourcecode:: bash
+
+         curl '{{API 주소}}/api/v1/photoList?body_no=1808' \
+            -H 'Authorization: Bearer eyJhb.......'
+
+   **Example response**:
+
+      .. sourcecode:: http
+
+         HTTP/1.1 200 OK
+         [
+            {
+               "name": "localhost/2021/11/17/708/1808/0.png",
+               "lastModified": "2022-03-10 14:15:59",
+               "contentSize": 3550040,
+               "contentType": "image/png",
+               "uri": "https://fittrixstorage.blob.core.windows.net/evaluated-photo/localhost/2021/11/17/708/1808/0.png"
+            },
+            {
+               "name": "localhost/2021/11/17/708/1808/1.png",
+               "lastModified": "2022-03-10 14:16:01",
+               "contentSize": 3548379,
+               "contentType": "image/png",
+               "uri": "https://fittrixstorage.blob.core.windows.net/evaluated-photo/localhost/2021/11/17/708/1808/1.png"
+            },
+            {
+               "name": "localhost/2021/11/17/708/1808/2.png",
+               "lastModified": "2022-03-10 14:16:01",
+               "contentSize": 3554217,
+               "contentType": "image/png",
+               "uri": "https://fittrixstorage.blob.core.windows.net/evaluated-photo/localhost/2021/11/17/708/1808/2.png"
+            },
+            {
+               "name": "localhost/2021/11/17/708/1808/3.png",
+               "lastModified": "2022-03-10 14:16:00",
+               "contentSize": 3592793,
+               "contentType": "image/png",
+               "uri": "https://fittrixstorage.blob.core.windows.net/evaluated-photo/localhost/2021/11/17/708/1808/3.png"
+            },
+            {
+               "name": "localhost/2021/11/17/708/1808/4.png",
+               "lastModified": "2022-03-10 14:16:00",
+               "contentSize": 3592462,
+               "contentType": "image/png",
+               "uri": "https://fittrixstorage.blob.core.windows.net/evaluated-photo/localhost/2021/11/17/708/1808/4.png"
+            },
+            {
+               "name": "localhost/2021/11/17/708/1808/5.png",
+               "lastModified": "2022-03-10 14:16:01",
+               "contentSize": 3512012,
+               "contentType": "image/png",
+               "uri": "https://fittrixstorage.blob.core.windows.net/evaluated-photo/localhost/2021/11/17/708/1808/5.png"
+            },
+            {
+               "name": "localhost/2021/11/17/708/1808/6.png",
+               "lastModified": "2022-03-10 14:15:59",
+               "contentSize": 3634681,
+               "contentType": "image/png",
+               "uri": "https://fittrixstorage.blob.core.windows.net/evaluated-photo/localhost/2021/11/17/708/1808/6.png"
+            },
+            {
+               "name": "localhost/2021/11/17/708/1808/7.png",
+               "lastModified": "2022-03-10 14:16:00",
+               "contentSize": 3535747,
+               "contentType": "image/png",
+               "uri": "https://fittrixstorage.blob.core.windows.net/evaluated-photo/localhost/2021/11/17/708/1808/7.png"
+            },
+            {
+               "name": "localhost/2021/11/17/708/1808/8.png",
+               "lastModified": "2022-03-10 14:15:53",
+               "contentSize": 13121,
+               "contentType": "image/png",
+               "uri": "https://fittrixstorage.blob.core.windows.net/evaluated-photo/localhost/2021/11/17/708/1808/8.png"
+            },
+            {
+               "name": "localhost/2021/11/17/708/1808/9.png",
+               "lastModified": "2022-03-10 14:15:53",
+               "contentSize": 13905,
+               "contentType": "image/png",
+               "uri": "https://fittrixstorage.blob.core.windows.net/evaluated-photo/localhost/2021/11/17/708/1808/9.png"
+            }
+         ]
+
 .. http:get:: /api/v1/photoView
 
    사용자의 측정 회차의 측정 이미지를 조회하는 API입니다.
@@ -130,3 +335,10 @@ API는 인증을 통해서 JWT 토큰을 발급받은 이후에 호출이 가능
    .. Response
 
    Image Binary File
+
+   **Example request**:
+
+      .. sourcecode:: bash
+
+         curl '{{API 주소}}/api/v1/photoView?path=localhost/2021/11/17/708/1808/0.png' \
+            -H 'Authorization: Bearer eyJhb.......'
